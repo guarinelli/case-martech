@@ -1,6 +1,95 @@
-// Preencha este arquivo com qualquer código que você necessite para realizar a
-// coleta, desde a biblioteca analytics.js, gtag.js ou o snippet do Google Tag 
-// Manager. No último caso, não é necessário implementar a tag <noscript>.
-// O ambiente dispõe da jQuery 3.5.1, então caso deseje, poderá utilizá-la
-// para fazer a sua coleta.
-// Caso tenha alguma dúvida sobre o case, não hesite em entrar em contato.
+(function () {
+
+    const form = document.querySelector('.contato');
+
+    if (!form) return;
+
+    let formStarted = false;
+
+    /*
+    ============================
+    FORM START
+    ============================
+    */
+
+    form.addEventListener('input', function () {
+
+        if (formStarted) return;
+
+        formStarted = true;
+
+        dataLayer.push({
+            event: 'form_start',
+            form_id: form.dataset.formId,
+            form_name: form.dataset.formName,
+            form_destination: form.dataset.formDestination
+        });
+
+    });
+
+
+    /*
+    ============================
+    FORM SUBMIT
+    ============================
+    */
+
+    form.addEventListener('submit', function () {
+
+        dataLayer.push({
+
+            event: 'form_submit',
+
+            form_id: form.dataset.formId,
+
+            form_name: form.dataset.formName,
+
+            form_destination: form.dataset.formDestination,
+
+            form_submit_text: document.querySelector('#btn-enviar').innerText.trim()
+
+        });
+
+    });
+
+
+    /*
+    ============================
+    VIEW FORM SUCCESS
+    ============================
+    */
+
+    const observer = new MutationObserver(function () {
+
+        const body = document.body;
+
+        if (!body.classList.contains('lightbox-open'))
+            return;
+
+        const titulo = document.querySelector('.lightbox-title');
+
+        if (!titulo)
+            return;
+
+        if (titulo.textContent.trim() !== 'Contato enviado')
+            return;
+
+        dataLayer.push({
+
+            event: 'view_form_success',
+
+            form_id: form.dataset.formId,
+
+            form_name: form.dataset.formName
+
+        });
+
+    });
+
+    observer.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class'],
+        subtree: false
+    });
+
+})();
