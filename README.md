@@ -1,4 +1,4 @@
-# Case Técnico – DP6 | Implementação de Tracking com Google Tag Manager e GA4
+# Case Técnico – DP6 | Implementação de Tracking com Google Tag Manager e Google Analytics 4 (GA4)
 
 Este repositório contém a solução desenvolvida para o Case Técnico da DP6, com foco na implementação de mensuração utilizando **Google Tag Manager (GTM)** e **Google Analytics 4 (GA4)**.
 
