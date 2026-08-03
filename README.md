@@ -6,6 +6,12 @@ Este repositório contém a solução desenvolvida para o Case Técnico da DP6, 
 
 Implementar os eventos especificados no PDF do desafio, realizando a coleta dos dados por meio do Google Tag Manager e o envio para o Google Analytics 4, seguindo a estrutura de eventos e parâmetros solicitada.
 
+## Arquivos da entrega
+
+Além do código-fonte, este repositório contém o arquivo de exportação do contêiner do Google Tag Manager utilizado na implementação:
+
+- `GTM-W26HJJ49_container_export.json`
+
 ## Tecnologias utilizadas
 
 - Google Tag Manager (Web)
